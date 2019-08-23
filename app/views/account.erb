@@ -2,11 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Flatiron Bank</title>
     <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css">  
   </head>
-  <body id="page-top">
-    
-
-  </body>
+  <% if Helpers.is_logged_in?(session) %>
+      <body id="page-top">
+        <h1>Welcome <%= @current_user.username %></h1>
+        <h3>Your Balance: <%= @current_user.balance %></h3><br>
+        <a href="/logout">Log Out</a>
+      </body> 
+    <% else %>
+     <%= erb :'error' %>
+    <% end %>
 </html>
